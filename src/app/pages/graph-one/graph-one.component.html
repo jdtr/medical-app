@@ -1,1 +1,50 @@
-<p>graph-one works!</p>
+<div class="row">
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="text-center">{{ graphics.grafico1.leyenda }}</h3>
+                <app-graph-done
+                    [chartLabels]="graphics.grafico1.labels"
+                    chartType="doughnut"
+                    [chartData]="graphics.grafico1.data"
+                ></app-graph-done>
+            </div><!-- /card-body -->
+        </div><!-- /card -->
+    </div><!-- /col-6 -->
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="text-center">{{ graphics.grafico2.leyenda }}</h3>
+                <app-graph-done 
+                    [chartLabels]="graphics.grafico2.labels"
+                    [chartType]="graphics.grafico2.type"
+                    [chartData]="graphics.grafico2.data"
+                ></app-graph-done>
+            </div><!-- /card-body -->
+        </div><!-- /card -->
+    </div><!-- /col-6 -->
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="text-center">{{ graphics.grafico3.leyenda }}</h3>
+                <app-graph-done 
+                    [chartLabels]="graphics.grafico3.labels"
+                    [chartType]="graphics.grafico3.type"
+                    [chartData]="graphics.grafico3.data"
+                ></app-graph-done>
+            </div><!-- /card-body -->
+        </div><!-- /card -->
+    </div><!-- /col-6 -->
+    <div class="col-6">
+        <div class="card">
+            <div class="card-body">
+                <h3 class="text-center">{{ graphics.grafico4.leyenda }}</h3>
+                <app-graph-done 
+                    [chartLabels]="graphics.grafico4.labels"
+                    [chartType]="graphics.grafico4.type"
+                    [chartData]="graphics.grafico4.data"
+                ></app-graph-done>
+            </div><!-- /card-body -->
+        </div><!-- /card -->
+    </div><!-- /col-6 -->
+</div><!-- /row -->
