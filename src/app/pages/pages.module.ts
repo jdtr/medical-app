@@ -11,6 +11,7 @@ import { GraphOneComponent } from './graph-one/graph-one.component';
 import { PagesComponent } from './pages.component';
 import { IncrementorComponent } from '../components/incrementor/incrementor.component';
 import { GraphDoneComponent } from '../components/graph-done/graph-done.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { GraphDoneComponent } from '../components/graph-done/graph-done.componen
     GraphOneComponent,
     PagesComponent,
     IncrementorComponent,
-    GraphDoneComponent
+    GraphDoneComponent,
+    AccountSettingsComponent
   ],
   imports: [
     SharedModule,
