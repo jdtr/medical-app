@@ -14,9 +14,9 @@ const pagesRoutes: Routes = [
       children: [
           { path: 'dashboard', component: DashboardComponent },
           { path: 'progress', component: ProgressComponent },
-          { path: 'grafica-one', component: GraphOneComponent },
+          { path: 'graphic-one', component: GraphOneComponent },
           { path: 'account-settings', component: AccountSettingsComponent },
-          { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
+          { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
       ]
     }
   ];
