@@ -12,10 +12,10 @@ const pagesRoutes: Routes = [
       path: '',
       component: PagesComponent,
       children: [
-          { path: 'dashboard', component: DashboardComponent },
-          { path: 'progress', component: ProgressComponent },
-          { path: 'graphic-one', component: GraphOneComponent },
-          { path: 'account-settings', component: AccountSettingsComponent },
+          { path: 'dashboard', component: DashboardComponent, data: { title: 'Dashboard' } },
+          { path: 'progress', component: ProgressComponent, data: { title: 'Progress' } },
+          { path: 'graphic-one', component: GraphOneComponent, data: { title: 'Graphics' } },
+          { path: 'account-settings', component: AccountSettingsComponent, data: { title: 'Account settings' } },
           { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
       ]
     }
