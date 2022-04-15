@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 
 import { SharedModule } from '../shared/shared.module';
 import { PagesRoutingModule } from './pages-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
 
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -12,6 +12,8 @@ import { PagesComponent } from './pages.component';
 import { IncrementorComponent } from '../components/incrementor/incrementor.component';
 import { GraphDoneComponent } from '../components/graph-done/graph-done.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
+import { ProfileComponent } from './profile/profile.component';
+import { CommonModule } from '@angular/common';
 
 
 @NgModule({
@@ -22,15 +24,18 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
     PagesComponent,
     IncrementorComponent,
     GraphDoneComponent,
-    AccountSettingsComponent
+    AccountSettingsComponent,
+    ProfileComponent
   ],
   imports: [
+    CommonModule,
     SharedModule,
     PagesRoutingModule,
     FormsModule,
+    ReactiveFormsModule,
     ChartsModule
   ],
-  exports:[
+  exports: [
     DashboardComponent,
     ProgressComponent,
     GraphOneComponent,

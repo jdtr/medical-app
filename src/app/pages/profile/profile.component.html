@@ -1,0 +1,60 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-body">
+            <h3 class="box-title m-b-0">My profile</h3>
+            <p class="text-muted m-b-30 font-13"> Settings </p>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    <form class="form p-t-20" [formGroup]="profileForm" (submit)="updateProfile()">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">User Name</label>
+                            <input type="text" class="form-control" 
+                                id="exampleInputEmail1" 
+                                placeholder="Enter Username"
+                                formControlName="name">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" 
+                                class="form-control" 
+                                id="exampleInputEmail1" 
+                                placeholder="Enter email"
+                                formControlName="email"
+                                [readOnly]="user.google">
+                        </div>
+                        <button type="submit" 
+                            class="btn btn-success btn-block waves-effect waves-light m-r-10"
+                            [disabled]="profileForm.invalid">
+                            <i class="fa fa-save"></i>
+                            Save changes
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Avatar</h4>
+                <h6 class="card-subtitle">User image</h6>
+                <div class="img-container text-center">
+                    <ng-container *ngIf="!imgTemp; else imageTemp">
+                        <img [src]="user.imageUrl" alt="Avatar" class="img-avatar"/>
+                    </ng-container>
+                    <ng-template #imageTemp>
+                        <img [src]="imgTemp" alt="Avatar" class="img-avatar"/>
+                    </ng-template>
+                </div>
+                <input type="file" (change)="changeImage($event.target.files[0])">
+                <br>
+                <button type="button" 
+                    [disabled]="!uploadedImage"
+                    (click)="uploadImage()"
+                    class="btn btn-success btn-block waves-effect waves-light m-r-10">
+                    <i class="fa fa-save"></i> Change image
+                </button>
+            </div><!-- /card-body -->
+        </div><!-- /card -->
+    </div>
+</div>
