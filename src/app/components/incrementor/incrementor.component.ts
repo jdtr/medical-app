@@ -9,8 +9,8 @@ export class IncrementorComponent implements OnInit {
 
   @ViewChild('valueProgress', {static: false}) valueProgress: ElementRef;
 
-  @Input() legend: string = 'Legend';
-  @Input() progress: number = 50;
+  @Input() legend = 'Legend';
+  @Input() progress = 50;
 
   @Output() changeValue: EventEmitter<number> = new EventEmitter();
 
@@ -19,8 +19,8 @@ export class IncrementorComponent implements OnInit {
   ngOnInit() {
   }
 
-  onChanges ( newValue: number ) {
-    if( newValue > 100 ) {
+  onChanges( newValue: number ) {
+    if ( newValue > 100 ) {
       this.progress = 100;
     } else if ( newValue < 0 ) {
       this.progress = 0;

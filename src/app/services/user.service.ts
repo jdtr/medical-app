@@ -36,6 +36,14 @@ export class UserService {
     return this.user.uid || '';
   }
 
+  get headers() {
+    return {
+      headers: {
+        'x-token': this.token
+      }
+    };
+  }
+
   googleInit() {
     return new Promise( resolve => {
       gapi.load('auth2', () => {
@@ -76,14 +84,26 @@ export class UserService {
     );
   }
 
+  getUsers( from: number = 0) {
+    const url = `${base_url}/users?from=${from}`;
+    return this.http.get(url, this.headers)
+      .pipe(map((resp: any) => {
+        const users = resp.users.map(
+          user => new User(user.name, user.email, '', user.img, '', user.google, user.uid)
+        );
+        return {
+          total: resp.total,
+          users
+        };
+      }));
+  }
+
   updateProfile( data: { email: string, name: string, role: string } ) {
     data = {
       ...data,
       role: this.user.role
     };
-    return this.http.put(`${base_url}/users/${this.uid}`, data, {
-      headers: {'x-token': this.token}
-    });
+    return this.http.put(`${base_url}/users/${this.uid}`, data, this.headers);
   }
 
   createUser( formData: RegisteForm ) {
@@ -111,5 +131,14 @@ export class UserService {
           localStorage.setItem('token', resp.token);
         })
       );
+  }
+
+  deleteUser(user: User) {
+    const url = `${base_url}/users/${user.uid}`;
+    return this.http.delete(url, this.headers);
+  }
+
+  saveUser( user: User) {
+    return this.http.put(`${base_url}/users/${user.uid}`, user, this.headers);
   }
 }

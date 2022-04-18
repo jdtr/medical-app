@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { AuthGuard } from '../guards/auth.guard';
+
 import { PagesComponent } from './pages.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { ProgressComponent } from './progress/progress.component';
 import { GraphOneComponent } from './graph-one/graph-one.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { ProfileComponent } from './profile/profile.component';
-import { AuthGuard } from '../guards/auth.guard';
+// Maintenance
+import { UsersComponent } from './maintenance/users/users.component';
 
 const newLocal = 'My Profile';
 const pagesRoutes: Routes = [
@@ -21,7 +24,8 @@ const pagesRoutes: Routes = [
           { path: 'graphic-one', component: GraphOneComponent, data: { title: 'Graphics' } },
           { path: 'account-settings', component: AccountSettingsComponent, data: { title: 'Account settings' } },
           { path: 'my-profile', component: ProfileComponent, data: { title: newLocal } },
-          { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
+          { path: 'users', component: UsersComponent, data: { title: 'Users' }},
+          { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       ]
     }
   ];

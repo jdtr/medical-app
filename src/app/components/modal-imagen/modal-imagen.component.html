@@ -1,0 +1,38 @@
+<div class="modal fade bs-example-modal-lg modal-container" 
+    tabindex="-1" 
+    role="dialog" 
+    aria-labelledby="myLargeModalLabel" 
+    [class.show]="!modalImageService.hiddenModal"
+    [class.hidden]="modalImageService.hiddenModal">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myLargeModalLabel">Load image</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            </div>
+            <div class="modal-body">
+                <h4>Select a image</h4>
+                <div class="img-container text-center">
+                    <ng-container *ngIf="!imgTemp; else imageTemp">
+                        <img [src]="modalImageService.img" alt="Avatar" class="img-avatar"/>
+                    </ng-container>
+                    <ng-template #imageTemp>
+                        <img [src]="imgTemp" alt="Avatar" class="img-avatar"/>
+                    </ng-template>
+                </div>
+                <input type="file" (change)="changeImage($event.target.files[0])">
+            </div>
+            <div class="modal-footer">
+                <button type="button" 
+                    class="btn btn-danger waves-effect text-left" 
+                    data-dismiss="modal" (click)="closeModal()">Close</button>
+                <button type="button" 
+                    class="btn btn-primary waves-effect text-left" 
+                    data-dismiss="modal"
+                    (click)="uploadImage()">Update photo</button>
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>

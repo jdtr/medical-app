@@ -14,6 +14,8 @@ import { GraphDoneComponent } from '../components/graph-done/graph-done.componen
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CommonModule } from '@angular/common';
+import { UsersComponent } from './maintenance/users/users.component';
+import { ComponentsModule } from '../components/components.module';
 
 
 @NgModule({
@@ -22,18 +24,17 @@ import { CommonModule } from '@angular/common';
     ProgressComponent,
     GraphOneComponent,
     PagesComponent,
-    IncrementorComponent,
-    GraphDoneComponent,
     AccountSettingsComponent,
-    ProfileComponent
+    ProfileComponent,
+    UsersComponent
   ],
   imports: [
     CommonModule,
     SharedModule,
     PagesRoutingModule,
+    ComponentsModule,
     FormsModule,
     ReactiveFormsModule,
-    ChartsModule
   ],
   exports: [
     DashboardComponent,
