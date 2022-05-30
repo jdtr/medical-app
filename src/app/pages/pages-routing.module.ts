@@ -11,6 +11,9 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { ProfileComponent } from './profile/profile.component';
 // Maintenance
 import { UsersComponent } from './maintenance/users/users.component';
+import { HospitalsComponent } from './maintenance/hospitals/hospitals.component';
+import { DoctorsComponent } from './maintenance/doctors/doctors.component';
+import { DoctorComponent } from './maintenance/doctors/doctor.component';
 
 const newLocal = 'My Profile';
 const pagesRoutes: Routes = [
@@ -25,6 +28,9 @@ const pagesRoutes: Routes = [
           { path: 'account-settings', component: AccountSettingsComponent, data: { title: 'Account settings' } },
           { path: 'my-profile', component: ProfileComponent, data: { title: newLocal } },
           { path: 'users', component: UsersComponent, data: { title: 'Users' }},
+          { path: 'hospitals', component: HospitalsComponent, data: { title: 'Hospitals' }},
+          { path: 'doctors', component: DoctorsComponent, data: { title: 'Doctors' }},
+          { path: 'doctors/:id', component: DoctorComponent, data: { title: 'Doctor' }},
           { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       ]
     }

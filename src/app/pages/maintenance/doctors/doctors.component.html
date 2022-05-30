@@ -1,0 +1,75 @@
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <input type="text" 
+                    class="form-control" 
+                    placeholder="Search doctor..."
+                    #txtTerm
+                    (keyup)="search(txtTerm.value)">
+            </div>
+        </div>
+    </div><!-- Col -->
+</div><!-- /row -->
+
+<div class="row" *ngIf="loading">
+    <div class="col-12">
+        <div class="alert alert-info text-center">
+            <i class="fa fa-spin fa-refresh fa-x2"></i>
+            <p class="mb-0">Please waiting...</p>
+        </div>
+    </div>
+</div>
+
+<div class="col-12">
+    <div class="card">
+        <div class="card-body" *ngIf="!loading">
+            <div class="row">
+                <div class="col-8">
+                    <h4 class="card-title">Doctors</h4>
+                    <h6 class="card-subtitle">Resgistered doctors in app</h6>
+                </div><!-- col -->
+                <div class="col-4">
+                    <div class="text-right">
+                        <a class="btn btn-primary" routerLink="/dashboard/medico/nuevo">
+                            <i class="fa fa-hospital-o"></i> Create doctor
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Photo</th>
+                            <th>Name</th>
+                            <th class="text-nowrap">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngIf="let doctor of doctors">
+                            <td>
+                                <img [src]="doctor.img | image:'doctors'" 
+                                    [alt]="docotr.name"
+                                    class="w100 cursos"
+                                    (click)="showModal(doctor)">
+                            </td>
+                            <td>{{ doctor.name }}</td>
+                            <td class="text-nowrap text-center">
+                                <a [routerLink]="['/dashboard/medico', medico._id]" 
+                                    data-toggle="tooltip" 
+                                    data-original-title="Edit"> 
+                                    <i class="fa fa-pencil text-inverse m-r-10"></i> 
+                                </a>
+                                <a (click)="deleteDoctor(medico)" data-toggle="tooltip" data-original-title="Delete"> <i class="fa fa-close text-danger"></i> </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- <button class="btn btn-secondary">previous</button>
+                &nbsp;
+                <button class="btn btn-secondary">After</button> -->
+            </div>
+        </div>
+    </div>
+</div>

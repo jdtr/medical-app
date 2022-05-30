@@ -9,9 +9,10 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AuthModule } from './auth/auth.module';
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
