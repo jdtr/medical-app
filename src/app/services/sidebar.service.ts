@@ -5,26 +5,31 @@ import { Injectable } from '@angular/core';
 })
 export class SidebarService {
 
-  public menu: any[] = [
-    {
-      title: 'Dashboard',
-      icon: 'mdi mdi-gauge',
-      submenu: [
-        { title: 'Main', url: '/' },
-        { title: 'ProgressBar', url: '/progress' },
-        { title: 'Graphics', url: '/graphic-one' },
-      ]
-    },
-    {
-      title: 'Maintenance',
-      icon: 'mdi mdi-folder-lock-open',
-      submenu: [
-        { title: 'Users', url: '/users' },
-        { title: 'Hospitals', url: '/hospitals' },
-        { title: 'Doctors', url: '/doctors' },
-      ]
-    }
-  ];
+  public menu: any[] = [];
 
-  constructor() { }
+  loadmenu() {
+    this.menu = JSON.parse(localStorage.getItem('menu')) || [];
+  }
+
+  // [
+  //   {
+  //     title: 'Dashboard',
+  //     icon: 'mdi mdi-gauge',
+  //     submenu: [
+  //       { title: 'Main', url: '/' },
+  //       { title: 'ProgressBar', url: '/progress' },
+  //       { title: 'Graphics', url: '/graphic-one' },
+  //     ]
+  //   },
+  //   {
+  //     title: 'Maintenance',
+  //     icon: 'mdi mdi-folder-lock-open',
+  //     submenu: [
+  //       { title: 'Users', url: '/users' },
+  //       { title: 'Hospitals', url: '/hospitals' },
+  //       { title: 'Doctors', url: '/doctors' },
+  //     ]
+  //   }
+  // ];
+
 }

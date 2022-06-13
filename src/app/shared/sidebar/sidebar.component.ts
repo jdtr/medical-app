@@ -9,12 +9,11 @@ import { UserService } from '../../services/user.service';
   styles: []
 })
 export class SidebarComponent implements OnInit {
-  public menu: any[];
   public user: User;
 
   // tslint:disable-next-line:variable-name
-  constructor( private _sidebarService: SidebarService, private _userService: UserService ) {
-    this.menu = _sidebarService.menu;
+  constructor( public sidebarService: SidebarService, private _userService: UserService ) {
+
     this.user = _userService.user;
   }
 

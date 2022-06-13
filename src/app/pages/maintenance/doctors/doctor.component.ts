@@ -36,6 +36,8 @@ export class DoctorComponent implements OnInit {
       hospital: ['', Validators.required]
     });
 
+    console.log(this.doctorForm)
+
     this.loadHospitals();
 
     this.doctorForm.get('hospital').valueChanges.subscribe( hospitalId => {
@@ -65,6 +67,7 @@ export class DoctorComponent implements OnInit {
   }
 
   saveDoctor() {
+    console.log(this.doctorForm.value)
     const { name } = this.doctorForm.value;
     if ( this.doctorSelected ) {
       // Update
@@ -82,7 +85,7 @@ export class DoctorComponent implements OnInit {
         .subscribe((resp: any) => {
           console.log(resp);
           Swal.fire('Created', `${name} created successful`, 'success');
-          this.router.navigateByUrl(`/dashboard/doctor/${resp.doctor._id}`);
+          this.router.navigateByUrl(`/dashboard/doctors/${resp.doctor._id}`);
         });
     }
   }

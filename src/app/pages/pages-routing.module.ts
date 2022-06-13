@@ -14,6 +14,8 @@ import { UsersComponent } from './maintenance/users/users.component';
 import { HospitalsComponent } from './maintenance/hospitals/hospitals.component';
 import { DoctorsComponent } from './maintenance/doctors/doctors.component';
 import { DoctorComponent } from './maintenance/doctors/doctor.component';
+import { SearchComponent } from './search/search.component';
+import { AdminGuard } from '../guards/admin.guard';
 
 const newLocal = 'My Profile';
 const pagesRoutes: Routes = [
@@ -27,10 +29,11 @@ const pagesRoutes: Routes = [
           { path: 'graphic-one', component: GraphOneComponent, data: { title: 'Graphics' } },
           { path: 'account-settings', component: AccountSettingsComponent, data: { title: 'Account settings' } },
           { path: 'my-profile', component: ProfileComponent, data: { title: newLocal } },
-          { path: 'users', component: UsersComponent, data: { title: 'Users' }},
           { path: 'hospitals', component: HospitalsComponent, data: { title: 'Hospitals' }},
           { path: 'doctors', component: DoctorsComponent, data: { title: 'Doctors' }},
           { path: 'doctors/:id', component: DoctorComponent, data: { title: 'Doctor' }},
+          { path: 'search/:term', component: SearchComponent, data: { title: 'Search' }},
+          { path: 'users', canActivate: [AdminGuard], component: UsersComponent, data: { title: 'Users' }},
           { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
       ]
     }

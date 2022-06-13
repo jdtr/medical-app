@@ -6,6 +6,7 @@ import { NoFoundComponent } from './no-found/no-found.component';
 import { HeaderComponent } from './header/header.component';
 import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { SidebarComponent } from './sidebar/sidebar.component';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   exports: [
     NoFoundComponent,

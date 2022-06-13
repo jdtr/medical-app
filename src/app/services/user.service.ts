@@ -44,6 +44,10 @@ export class UserService {
     };
   }
 
+  get role(): 'ADMIN_ROLE' | 'USER_ROLE' {
+    return this.user.role;
+  }
+
   googleInit() {
     return new Promise( resolve => {
       gapi.load('auth2', () => {
@@ -57,8 +61,14 @@ export class UserService {
     });
   }
 
+  saveLocalStorage(token: string, menu: string) {
+    localStorage.setItem('token', token);
+    localStorage.setItem('menu', JSON.stringify(token));
+  }
+
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('menu');
 
     this.auth2.signOut().then(() => {
       this.ngZone.run(() => {
@@ -77,7 +87,7 @@ export class UserService {
         const { email, google, name, role, img = '', uid } = resp.user;
         this.user = new User(name, email, role, img, '', google, uid);
         console.log(resp);
-        localStorage.setItem('token', resp.token );
+        this.saveLocalStorage(resp.token, resp.menu);
         return true;
       }),
       catchError(err => of(false))
@@ -109,27 +119,21 @@ export class UserService {
   createUser( formData: RegisteForm ) {
     return this.http.post(`${base_url}/users`, formData)
       .pipe(
-        tap((resp: any) => {
-          localStorage.setItem('token', resp.token);
-        })
+        tap((resp: any) => this.saveLocalStorage(resp.token, resp.menu))
       );
   }
 
   loginUser(formData: LoginForm ) {
     return this.http.post(`${base_url}/login`, formData)
       .pipe(
-        tap((resp: any) => {
-          localStorage.setItem('token', resp.token);
-        })
+        tap((resp: any) => this.saveLocalStorage(resp.token, resp.menu))
       );
   }
 
   loginGoogle(token) {
     return this.http.post(`${base_url}/login/google`, { token })
       .pipe(
-        tap((resp: any) => {
-          localStorage.setItem('token', resp.token);
-        })
+        tap((resp: any) => this.saveLocalStorage(resp.token, resp.menu))
       );
   }
 

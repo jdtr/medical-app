@@ -52,6 +52,11 @@ export class SearchService {
       );
   }
 
+  globalSearch(term: string) {
+    const url = `${base_url}/all/${term}`;
+    return this.http.get(url, this.headers);
+  }
+
   private transformUsers(results: any[]): User[] {
     return results.map(
       user => new User(user.name, user.email, '', user.img, '', user.google, user.uid)
