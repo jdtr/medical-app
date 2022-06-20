@@ -15,7 +15,7 @@
                         <tbody>
                             <tr *ngFor="let user of users">
                                 <td>
-                                    <img [src]="user.img | image:'users" alt="User">
+                                    <img [src]="user.img | image:'users'" alt="User">
                                 </td>
                                 <td>{{ user.name }}</td>  
                             </tr>
@@ -41,7 +41,7 @@
                         <tbody>
                             <tr *ngFor="let doctor of doctors">
                                 <td>
-                                    <img [src]="doctor.img | image:'doctor" alt="Doctor">
+                                    <img [src]="doctor.img | image:'doctor'" alt="Doctor">
                                 </td>
                                 <td>
                                     <a [routerLink]="['/dashboard/doctor', doctor._id]">{{ doctor.name }}</a>
@@ -69,7 +69,7 @@
                         <tbody>
                             <tr *ngFor="let hospital of hospitals">
                                 <td>
-                                    <img [src]="hospital.img | image:'hospitals" alt="Hospital">
+                                    <img [src]="hospital.img | image:'hospitals'" alt="Hospital">
                                 </td>
                                 <td>{{ hospital.name }}</td>  
                             </tr>

@@ -44,7 +44,7 @@ export class UserService {
     };
   }
 
-  get role(): 'ADMIN_ROLE' | 'USER_ROLE' {
+  get role() {
     return this.user.role;
   }
 
@@ -63,7 +63,7 @@ export class UserService {
 
   saveLocalStorage(token: string, menu: string) {
     localStorage.setItem('token', token);
-    localStorage.setItem('menu', JSON.stringify(token));
+    localStorage.setItem('menu', JSON.stringify(menu));
   }
 
   logout() {
