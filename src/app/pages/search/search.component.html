@@ -41,7 +41,7 @@
                         <tbody>
                             <tr *ngFor="let doctor of doctors">
                                 <td>
-                                    <img [src]="doctor.img | image:'doctor'" alt="Doctor">
+                                    <img [src]="doctor.img | image:'doctors'" alt="Doctor">
                                 </td>
                                 <td>
                                     <a [routerLink]="['/dashboard/doctor', doctor._id]">{{ doctor.name }}</a>
